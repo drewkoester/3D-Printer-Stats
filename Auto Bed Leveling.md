@@ -18,3 +18,29 @@ nozzle | z-offset | Notes
 .4 mm | -1.808 | stock nozzle
 .8 mm | -2.361 | n/a
 
+# Starting G-Code
+```
+; // Start
+
+G28 ; Homes one time never use this after this point will mess gcode up
+M420 S1 ; Load Saved Eeprom From Auto Level
+G1 Z5 F3000 ; Lift
+G1 X20 Y10 F15000 ; Avoid Clips
+G1 Z0.2 F3000 ; Get Ready To Prime Nozzle
+G1 X120 E10 F600 ; Prime Nozzle
+G1 X150  F5000 ; Wipe Nozzle
+```
+
+# Ending G-Code
+```
+G91
+G1 F1800 E-3
+G1 F3000 Z10
+G90
+G28 X0 Y0 ; home x and y axis
+M106 S0 ; turn off cooling fan
+M104 S0 ; turn off extruder
+M140 S0 ; turn off bed
+M84 ; disable motors
+```
+
