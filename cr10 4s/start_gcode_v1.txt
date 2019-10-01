@@ -1,0 +1,12 @@
+; // Start
+
+G29A ; Enable Autobed Level
+G28 ; home all axes
+;G29 L1 ;Load a mesh
+G29
+;G29 J ;Grid Leveling
+G1 Z5 F3000 ; Lift
+G1 X20 Y10 F15000 ; Avoid Clips
+G1 Z0.2 F3000 ; Get Ready To Prime Nozzle
+G1 X120 E10 F600 ; Prime Nozzle
+G1 X150  F5000 ; Wipe Nozzle
