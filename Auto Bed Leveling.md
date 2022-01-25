@@ -22,8 +22,10 @@ nozzle | z-offset | Notes
 ```
 ; // Start
 
-G28 ; Homes one time never use this after this point will mess gcode up
-M420 S1 ; Load Saved Eeprom From Auto Level
+G29A ; Enable Autobed Level
+G28 ; home all axes
+G29 L1 ;Load a mesh
+G29 J ;Grid Leveling
 G1 Z5 F3000 ; Lift
 G1 X20 Y10 F15000 ; Avoid Clips
 G1 Z0.2 F3000 ; Get Ready To Prime Nozzle
